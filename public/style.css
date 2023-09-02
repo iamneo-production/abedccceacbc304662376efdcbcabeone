@@ -1,12 +1,27 @@
+<!Doctype html>
+<html>
+    <title>tic tac toe</title>
+<head>
+<body>
+    <h1>tic tac toe</h1>
+    <table>
+        <tr>
+            <td><input type="button" value="X"></td>
+            <td><input type="button" value="O"></td>
+            <td><input type="button" value="X"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="X"></td>
+            <td><input type="button" value="O"></td>
+            <td><input type="button" value="X"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="X"></td>
+            <td><input type="button" value="O"></td>
+            <td><input type="button" value="X"></td>
+        </tr>
 
-@import url("https://fonts.googleapis.com/css2?family=Radio+Canada:wght@400;500;600;700&display=swap");
-
-body {
-    background-image: url("https://cdn.pixabay.com/photo/2018/03/17/19/36/connection-3234929_1280.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    font-family: "Radio Canada", sans-serif;
-  }
-  
-/* Enter your styling here */
+    </table>
+</body>
+</head>
+</html>

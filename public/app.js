@@ -1,64 +1,44 @@
-// Initial game state
-let cells = ['', '', '', '', '', '', '', '', ''];
-let currentPlayer = 'X';
-let result = document.querySelector('.result');
-let btns = document.querySelectorAll('.btn');
-let conditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
+var cells = document.querySelectorAll("input");
 
-// Function to handle player moves
-const ticTacToe = (element, index) => {
-    // Your game logic here
+// Check for a winner.
+function checkWinner() {
+  var winner = "";
 
-    /*
-    **Part 1: Winning Conditions (Add your code here)**
+  // Check rows.
+  for (var i = 0; i < 3; i++) {
+    if (cells[i * 3].value == cells[i * 3 + 1].value && cells[i * 3 + 1].value == cells[i * 3 + 2].value) {
+      winner = cells[i * 3].value;
+      break;
+    }
+  }
 
-    1. Implement the logic to check for winning conditions using the 'conditions' array.
-    2. Display a winning message in the 'result' element when a player wins.
-    3. Disable all buttons after a win.
-    */
+  // Check columns.
+  for (var i = 0; i < 3; i++) {
+    if (cells[i].value == cells[i + 3].value && cells[i + 3].value == cells[i + 6].value) {
+      winner = cells[i].value;
+      break;
+    }
+  }
 
-    // Your code to update the game state and check for a win
-    // ...
+  // Check diagonals.
+  if (cells[0].value == cells[4].value && cells[4].value == cells[8].value) {
+    winner = cells[0].value;
+  } else if (cells[2].value == cells[4].value && cells[4].value == cells[6].value) {
+    winner = cells[2].value;
+  }
 
-    // Your code to display the current player's turn
-    // ...
+  // Disable the buttons if there is a winner.
+  if (winner) {
+    for (var i = 0; i < 9; i++) {
+      cells[i].disabled = true;
+    }
+  }
+}
 
-    // Your code to handle button and cell interactions
-    // ...
-};
-
-    /*
-    **Part 2: Reset Function (Add your code here)**
-
-    1. Implement a new function that resets the game to its initial state.
-    2. Ensure the 'cells', 'btns', and 'currentPlayer' variables are reset.
-    3. Update the 'result' element to indicate the current player's turn.
-    4. Re-enable all buttons for a new game.
-    */
-
-// Function to reset the game
-const resetGame = () => {
-    // Your code to reset the game state
-    // ...
-
-    // Your code to update the 'result' element
-    // ...
-
-    // Your code to re-enable buttons
-    // ...
-};
-
-btns.forEach((btn, i) => {
-    btn.addEventListener('click', () => ticTacToe(btn, i));
+// Disable the buttons after a cell has been filled.
+cells.forEach(function(cell) {
+  cell.addEventListener("click", function() {
+    cell.disabled = true;
+    checkWinner();
+  });
 });
-
-document.querySelector('#reset').addEventListener('click', resetGame);
